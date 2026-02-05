@@ -1,6 +1,187 @@
 @import "ui-variables";
 @import "ui-mixins";
 
-.my-package .btn {
-  
+.translator-container {
+  margin: 10px 0 14px;
+  padding: 10px;
+  background: @background-secondary;
+  border: 1px solid @border-color-divider;
+  border-radius: 6px;
+}
+
+.translator-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.translator-container .btn.btn-toolbar,
+.composer-translate-button .btn.btn-toolbar {
+  background: @component-active-color;
+  color: @text-color-inverse;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.translator-container .btn.btn-toolbar:hover,
+.composer-translate-button .btn.btn-toolbar:hover {
+  background: darken(@component-active-color, 6%);
+}
+
+.translator-container .btn.btn-toolbar:disabled,
+.composer-translate-button .btn.btn-toolbar:disabled {
+  background: @border-color-divider;
+  color: @text-color-subtle;
+  cursor: not-allowed;
+}
+
+.translator-error {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: fade(@color-error, 12%);
+  border: 1px solid @color-error;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.translator-result {
+  margin-top: 10px;
+  padding: 12px;
+  background: @background-primary;
+  border: 1px solid @border-color-divider;
+  border-radius: 6px;
+}
+
+.translator-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid @border-color-divider;
+}
+
+.translator-result-title {
+  font-weight: 600;
+  color: @text-color;
+}
+
+.translator-result-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.translator-result-content {
+  margin-top: 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+  color: @text-color;
+}
+
+.translator-result-content.is-html {
+  white-space: normal;
+}
+
+.translator-result-content.is-html .ai-translation {
+  margin-top: 4px;
+}
+
+.translator-settings {
+  margin-top: 10px;
+  padding: 12px;
+  background: @background-primary;
+  border: 1px solid @border-color-divider;
+  border-radius: 6px;
+}
+
+.translator-settings .settings-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.translator-settings .settings-field label {
+  font-size: 12px;
+  color: @text-color-subtle;
+}
+
+.translator-settings input,
+.translator-settings select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid @border-color-divider;
+  border-radius: 4px;
+  background: @background-primary;
+  color: @text-color;
+}
+
+.translator-settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.translator-settings-actions .btn.btn-emphasis {
+  background: @component-active-color;
+  color: @text-color-inverse;
+  border: none;
+}
+
+.translator-settings-actions .btn.btn-emphasis:hover {
+  background: darken(@component-active-color, 6%);
+}
+
+.composer-translate-button {
+  position: relative;
+  display: inline-block;
+}
+
+.translator-options {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  padding: 12px;
+  background: @background-primary;
+  border: 1px solid @border-color-divider;
+  border-radius: 6px;
+  box-shadow: 0 6px 16px fade(@black, 18%);
+  z-index: 1000;
+  min-width: 360px;
+  max-width: 520px;
+}
+
+.composer-translate-button .translator-settings {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  min-width: 300px;
+  max-width: 380px;
+  box-shadow: 0 6px 16px fade(@black, 18%);
+  z-index: 1000;
+}
+
+.translator-options-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.translator-options-actions .btn.btn-emphasis {
+  background: @component-active-color;
+  color: @text-color-inverse;
+  border: none;
+}
+
+.translator-options-actions .btn.btn-emphasis:hover {
+  background: darken(@component-active-color, 6%);
 }

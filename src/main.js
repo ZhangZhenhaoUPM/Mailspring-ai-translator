@@ -1,32 +1,57 @@
 import { ComponentRegistry } from 'mailspring-exports';
 
-import MyComposerButton from './my-composer-button';
-import MyMessageSidebar from './my-message-sidebar';
+import TranslateButton from './components/TranslateButton';
+import ComposerTranslateButton from './components/ComposerTranslateButton';
 
-// Activate is called when the package is loaded. If your package previously
-// saved state using `serialize` it is provided.
-//
+export const config = {
+  apiKey: {
+    type: 'string',
+    default: '',
+    title: 'Gemini API Key',
+    description: 'Create an API key in Google AI Studio and paste it here'
+  },
+  model: {
+    type: 'string',
+    default: 'gemini-2.5-flash',
+    title: 'Gemini Model',
+    description: 'Model name used for translation (for example: gemini-2.5-flash)'
+  },
+  targetLanguage: {
+    type: 'string',
+    default: 'zh-CN',
+    enum: ['zh-CN', 'zh-TW', 'en', 'ja', 'ko', 'es', 'fr', 'de', 'ru', 'pt', 'it', 'ar'],
+    enumLabels: [
+      '简体中文',
+      '繁體中文',
+      'English',
+      '日本語',
+      '한국어',
+      'Español',
+      'Français',
+      'Deutsch',
+      'Русский',
+      'Português',
+      'Italiano',
+      'العربية'
+    ],
+    title: 'Target Language',
+    description: 'Language to translate emails into'
+  }
+};
+
 export function activate() {
-  ComponentRegistry.register(MyComposerButton, {
-    role: 'Composer:ActionButton',
+  ComponentRegistry.register(TranslateButton, {
+    role: 'MessageFooterStatus'
   });
-  ComponentRegistry.register(MyMessageSidebar, {
-    role: 'MessageListSidebar:ContactCard',
+
+  ComponentRegistry.register(ComposerTranslateButton, {
+    role: 'Composer:ActionButton'
   });
 }
 
-// Serialize is called when your package is about to be unmounted.
-// You can return a state object that will be passed back to your package
-// when it is re-activated.
-//
 export function serialize() {}
 
-// This **optional** method is called when the window is shutting down,
-// or when your package is being updated or disabled. If your package is
-// watching any files, holding external resources, providing commands or
-// subscribing to events, release them here.
-//
 export function deactivate() {
-  ComponentRegistry.unregister(MyComposerButton);
-  ComponentRegistry.unregister(MyMessageSidebar);
+  ComponentRegistry.unregister(TranslateButton);
+  ComponentRegistry.unregister(ComposerTranslateButton);
 }
